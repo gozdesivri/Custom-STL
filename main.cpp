@@ -2,32 +2,26 @@
 #include <iostream>
 #include "DynamicArray.hpp"
 #include "LinkedList.hpp"
-#include "Stack.hpp" // Yeni yapımızı dahil ettik
+#include "Stack.hpp"
+#include "Queue.hpp" // Yeni yapımızı ekledik
 
 int main() {
     std::cout << "=========================================" << std::endl;
     std::cout << "        CUSTOM STL KUTUPHANESI TEST      " << std::endl;
     std::cout << "=========================================" << std::endl;
 
-    // 1. STACK TESTİ
-    std::cout << "\n>>> STACK (YIGIN) TESTI:" << std::endl;
-    Stack<int> tabaklar;
-    
-    tabaklar.push(10); // En altta
-    tabaklar.push(20);
-    tabaklar.push(30); // En üstte
+    // QUEUE (KUYRUK) TESTİ
+    std::cout << "\n>>> QUEUE (KUYRUK) TESTI:" << std::endl;
+    Queue<std::string> biletKuyrugu;
 
-    std::cout << "En ustteki tabak: " << tabaklar.top() << std::endl; // 30 basmalı
-    
-    tabaklar.pop(); // En üsttekini (30) aldık
-    std::cout << "30'u pop ettikten sonra en ustteki: " << tabaklar.top() << std::endl; // 20 basmalı
+    biletKuyrugu.enqueue("Gozde"); // İlk girdi
+    biletKuyrugu.enqueue("Ahmet");
+    biletKuyrugu.enqueue("Mehmet");
 
-    // 2. LINKED LIST TESTİ
-    std::cout << "\n>>> LINKED LIST TESTI:" << std::endl;
-    LinkedList<std::string> sehirler;
-    sehirler.insertAtTail("Bursa");
-    sehirler.insertAtTail("Istanbul");
-    sehirler.printList();
+    std::cout << "Kuyrugun en onundeki kisi: " << biletKuyrugu.front() << std::endl; // Gozde basmalı
+
+    biletKuyrugu.dequeue(); // Gözde biletini aldı ve çıktı
+    std::cout << "Gozde ciktiktan sonra en ondeki kisi: " << biletKuyrugu.front() << std::endl; // Ahmet basmalı
 
     return 0;
 }
